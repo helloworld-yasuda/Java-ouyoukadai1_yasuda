@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import users.Users;
+
 @RestController
 @RequestMapping("/api")
 public class HelloController {
@@ -21,6 +23,13 @@ public class HelloController {
     @GetMapping("/hoge")
     public String sayHoge() {
         return "hogehogehoge";
+    }
+    
+    //課題1 エンドポイントにGET通信をしたときに、レスポンスが返却されるようにする
+    @GetMapping("/users")
+    public Users getUsers() { 
+    	Users users = new Users(1,"John Doe","john.doe@example.com");
+    	return users;
     }
 
     @GetMapping("/check-db")
