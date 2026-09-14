@@ -1,7 +1,5 @@
 package users;
 
-import java.util.jar.Attributes.Name;
-
 public class Users {
 	public int id;
 	public String name;
