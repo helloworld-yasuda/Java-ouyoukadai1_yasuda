@@ -39,18 +39,14 @@ public class HelloController {
 	@GetMapping("/users/{user_id}")
 	public Users getUsersDetail(@PathVariable("user_id") Long id) {
 		String sql = "SELECT id,name,email FROM users WHERE id = ?";
-		Users users = jdbcTemplate.queryForObject(
-				sql, 
-				BeanPropertyRowMapper.newInstance(Users.class), 
-				id
-		);
-		return users;// 得られたデータリストをwebブラウザやcurlに返す
+		Users users = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Users.class), id);
+		return users;
 	}
 
 	@GetMapping("/check-db")
 	public String checkDbConnection() {
 		try {
-			jdbcTemplate.queryForObject("SELECT 1", Integer.class); // MySQLへの接続確認
+			jdbcTemplate.queryForObject("SELECT 1", Integer.class);
 			return "Database connection is successful!";
 		} catch (Exception e) {
 			return "Database connection failed!";
